@@ -1,24 +1,72 @@
-import React from 'react';
-import logo from './logo.svg';
+
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 import './App.css';
 
+
 function App() {
+
+  const body = document.getElementsByTagName('body')[0];
+
+
+function changeBackground(){
+  body.style.background = `linear-gradient(to right,${getRandomHEXColor()},${getRandomHEXColor()})`;
+}
+
+function getRandomHEXColor() {
+  const SEED = '0123456789abcdef';
+  let output = '#';
+  while (output.length < 7) {
+    output += SEED[Math.floor(Math.random() * SEED.length)];
+  }
+  return output;
+}
+
+
+
+
+
+
+ 
+  const [quote, setQuote] = useState("") 
+
+
+ useEffect(()=>{
+ getQuote();
+
+})
+
+const getQuote = () => {
+  axios.get("https://api.adviceslip.com/advice")
+  
+  .then((response) => {
+    const {advice} = response.data.slip
+    setQuote(advice)
+    changeBackground()
+    
+
+  })
+  
+  .catch((error) => {
+    console.log(error)
+  })
+}
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='app'>
+      
+      <div className='card'>
+       <h1 className='quote'>
+        {quote}
+       </h1>
+       <button onClick={() => {
+         getQuote()
+       }} className='button' type='button' >
+        Please, give me another quote. I'm begging you
+        </button>
+      </div>
     </div>
   );
 }

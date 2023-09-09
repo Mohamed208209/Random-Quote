@@ -1,38 +1,94 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@200&display=swap');
+#root, html, body {
+    margin:0;
+    padding:0;
+    height:100vh;
+    box-sizing:border-box;
+   
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app{
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.card{
+    width:50%;
+    height:30%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    border: 10px solid #093E55;
+    border-radius:30px;
+    padding:3%;
+    box-shadow: 1px 1px 2px 2px; 
+}
+
+.quote{
+    display:flex;
+    align-items:center;
+    height:80%;
+    font-family: 'League Spartan', sans-serif;
+    line-height:1.5;
+    margin-top:5.5vh;
+    
+}
+
+.button {
+    position: relative;
+    outline: none;
+    text-decoration: none;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    text-transform: uppercase;
+    height: 19vh;
+    width: 50%;
+    opacity: 1;
+    background-color: #093E55;
+    border: 1px solid rgba(22, 76, 167, 0.6);
+    color:#a9b478;
+    letter-spacing: 0.7px;
+    line-height:1.4;
+    margin-bottom:4vh;
+    font-weight:bold
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  .button:hover {
+    
+    animation: rotate 0.7s ease-in-out both;
+  
+  animation-delay: 0.06s;
   }
-  to {
-    transform: rotate(360deg);
+
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg) translate3d(0, 0, 0);
+    }
+    25% {
+      transform: rotate(3deg) translate3d(0, 0, 0);
+    }
+    50% {
+      transform: rotate(-3deg) translate3d(0, 0, 0);
+    }
+    75% {
+      transform: rotate(1deg) translate3d(0, 0, 0);
+    }
+    100% {
+      transform: rotate(0deg) translate3d(0, 0, 0);
+    }
   }
-}
+
+
+  
+  @media only screen and (max-width: 600px) {
+    .card {
+        width: 80%;
+        height: 30%;
+    }
+  }
